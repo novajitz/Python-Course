@@ -1,3 +1,5 @@
+#diskusage.py
+# written by Tony Jones novajitz @ gmail.com
 # first attempt at a useful program: one I do miss from linux
 
 # DiskUsage
@@ -13,6 +15,7 @@ import sys
 import os
 import math
 
+# output a useful number instead of a stupidly large byte count
 def convert_size(size):
    if (size == 0):
        return '0B'
@@ -32,12 +35,20 @@ def getdiskusage(strFoldername):
     return totalsize
 
 def main():
+
     if len(sys.argv) >1:
-        os.chdir(sys.argv[1])
+        #check path exists
+        if os.path.exists(sys.argv):
+            os.chdir(sys.argv[1])
+        else:
+            #path not valid, so quit
+            print("Path {} not valid".format(sys.argv[1]))
+            exit()
 
-    strcwd = os.getcwd()
+        #we gpt here so either the path is valid or we're using current dir
+        strcwd = os.getcwd()
 
-    print('Folder {} is {} bytes'.format(strcwd, convert_size(getdiskusage(strcwd))))
+        print('Folder {} is {} bytes'.format(strcwd, convert_size(getdiskusage(strcwd))))
 
 if __name__ == "__main__":
     main()
