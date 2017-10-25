@@ -31,7 +31,6 @@ def getdiskusage(strFoldername):
 
 	for dirName, dirList, fileList in os.walk(strFoldername):
 		for fname in fileList:
-			#print("\t{}".format(os.path.join(dirName, fname)))
 			try:
 				totalsize += os.path.getsize(os.path.join(dirName, fname))
 			except IOError:
