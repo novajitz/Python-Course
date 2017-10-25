@@ -10,12 +10,10 @@
 #
 # folder specified - list disk usage of all files in the specified folder
 #
-
 import sys
 import os
 import math
 import logging
-
 
 # output a useful number instead of a stupidly large byte count
 # from http://stackoverflow.com/questions/5194057/better-way-to-convert-file-sizes-in-python
@@ -56,7 +54,7 @@ def main():
 			print("Path {} not valid".format(sys.argv[1]))
 			exit()
 
-		#we gpt here so either the path is valid or we're using current dir
+		#we got here so either the path is valid or we're using current dir
 		strcwd = os.getcwd()
 
 		print('Folder {} is {} bytes'.format(strcwd, convert_size(getdiskusage(strcwd))))
